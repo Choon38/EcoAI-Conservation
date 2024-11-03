@@ -21,10 +21,19 @@ The EcoAI Conservation Portal aims to raise awareness about endangered species a
 - Resources for sustainable practices and environmental education
 
 ## Technologies Used
-- HTML
-- CSS (Tailwind CSS)
-- JavaScript (for any interactive elements in the future)
-- [Your AI Tools/Frameworks Here] (e.g., TensorFlow, PyTorch) if applicable
+
+This project utilizes a variety of technologies to create an effective and engaging conservation portal. The key technologies used include:
+
+- **HTML:** The foundational markup language used to structure the web pages.
+- **CSS (Tailwind CSS):** A utility-first CSS framework that allows for rapid styling and responsive design, ensuring a visually appealing user interface.
+- **JavaScript:** Although not currently implemented, this language is intended for any interactive elements that may be added in the future, enhancing user experience.
+- **AI Tools/Frameworks:**
+  - **TensorFlow:** An open-source machine learning library that could be used for building and training AI models to analyze data related to endangered species and predict conservation outcomes.
+
+  - **Scikit-learn:** A powerful library for machine learning in Python, used for data analysis and building models to support conservation efforts.
+  
+These technologies work together to provide a comprehensive platform for raising awareness and promoting conservation efforts for endangered species through the use of artificial intelligence.
+
 
 ## Getting Started
 To get a local copy of the project, follow these steps:
