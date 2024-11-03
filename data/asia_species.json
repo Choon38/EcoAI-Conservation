@@ -1,0 +1,27 @@
+[
+    {
+        "common_name": "Dipterocarpus alatus",
+        "scientific_name": "Dipterocarpus alatus",
+        "description": "A large tree species found in tropical rainforests."
+    },
+    {
+        "common_name": "Aquilaria malaccensis",
+        "scientific_name": "Aquilaria malaccensis",
+        "description": "Known for its fragrant resin, used to make agarwood."
+    },
+    {
+        "common_name": "Hopea odorata",
+        "scientific_name": "Hopea odorata",
+        "description": "A tropical hardwood tree, valued for its timber."
+    },
+    {
+        "common_name": "Dendrocalamus giganteus",
+        "scientific_name": "Dendrocalamus giganteus",
+        "description": "The world's largest bamboo species, native to India."
+    },
+    {
+        "common_name": "Gmelina arborea",
+        "scientific_name": "Gmelina arborea",
+        "description": "A fast-growing tree valued for its wood."
+    }
+]

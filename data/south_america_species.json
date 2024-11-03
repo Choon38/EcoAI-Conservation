@@ -1,0 +1,27 @@
+[
+  {
+      "common_name": "Cedrela odorata",
+      "scientific_name": "Cedrela odorata",
+      "description": "Known as Spanish Cedar, valued for its aromatic wood."
+  },
+  {
+      "common_name": "Swietenia macrophylla",
+      "scientific_name": "Swietenia macrophylla",
+      "description": "Mahogany, prized for its timber and beauty."
+  },
+  {
+      "common_name": "Araucaria angustifolia",
+      "scientific_name": "Araucaria angustifolia",
+      "description": "The Parana Pine, critically endangered in its native habitat."
+  },
+  {
+      "common_name": "Tabebuia impetiginosa",
+      "scientific_name": "Tabebuia impetiginosa",
+      "description": "Known for its beautiful pink flowers."
+  },
+  {
+      "common_name": "Schinopsis balansae",
+      "scientific_name": "Schinopsis balansae",
+      "description": "A tree species known for its hard wood."
+  }
+]

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endangered Species Search</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-800 text-white p-8">
+
+    <div class="container mx-auto bg-gray-900 p-6 rounded-lg shadow-md">
+        <h1 class="text-3xl font-bold mb-4 text-center">Endangered Species Search</h1>
+        
+        <label for="continent" class="block text-lg font-medium mb-2">Select a Continent:</label>
+        <select id="continent" class="w-full p-2 border border-gray-700 bg-gray-800 text-white rounded mb-4">
+            <option value="">--Choose a continent--</option>
+            <option value="Africa">Africa</option>
+            <option value="Asia">Asia</option>
+            <option value="Antarctica">Antarctica</option>
+            <option value="Europe">Europe</option>
+            <option value="North America">North America</option>
+            <option value="Australia">Australia</option>
+            <option value="South America">South America</option>
+        </select>
+
+        <button onclick="search()" class="w-full p-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Search</button>
+
+        <div id="results" class="mt-6 hidden">
+            <h2 class="text-xl font-semibold mb-2">Endangered Species:</h2>
+            <ul id="speciesList" class="list-disc list-inside"></ul>
+
+            <h2 class="text-xl font-semibold mt-4 mb-2">Conservation Actions:</h2>
+            <ul id="conservationActionsList" class="list-disc list-inside"></ul>
+
+            <canvas id="speciesChart" class="mt-4" width="400" height="200"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        let speciesChart; // Declare speciesChart variable
+
+        function search() {
+            const continent = document.getElementById('continent').value;
+            const speciesList = document.getElementById('speciesList');
+            const conservationActionsList = document.getElementById('conservationActionsList');
+            const resultsDiv = document.getElementById('results');
+            const speciesChartCanvas = document.getElementById('speciesChart');
+            const speciesChartContext = speciesChartCanvas.getContext('2d');
+
+            // Clear previous results
+            speciesList.innerHTML = '';
+            conservationActionsList.innerHTML = '';
+
+            if (!continent) {
+                alert('Please select a continent.');
+                return;
+            }
+
+            // Data for endangered species for each continent
+            const endangeredSpecies = {
+                'Africa': [
+                { species: 'Adansonia digitata (Baobab)', conservationAction: 'Protection of habitat and species management.' },
+                { species: 'Encephalartos woodii', conservationAction: 'Ex-situ conservation and awareness programs.' },
+                { species: 'Prunus africana', conservationAction: 'Sustainable harvesting regulations.' },
+                { species: 'Pseudophoenix sargentii (Sargent\'s Palm)', conservationAction: 'Habitat restoration and protection from invasive species.' },
+                { species: 'Hymenocallis palmeri', conservationAction: 'Conservation of wetland ecosystems and species monitoring.' },
+                { species: 'Pachypodium bispinosum', conservationAction: 'Conservation in botanical gardens and habitat protection.' },
+                { species: 'Dracaena cinnabari ', conservationAction: 'Sustainable harvesting and land management practices.'},
+                { species: 'Nymphaea caerulea (Blue Lotus)', conservationAction: 'Wetland protection and community awareness programs.' },
+                { species: 'Coccoloba uvifera (Sea Grape)', conservationAction: 'Coastal habitat protection and reforestation efforts.' },
+                { species: 'Sclerocarya birrea (Marula)', conservationAction: 'Promotion of sustainable land use and agroforestry.' },
+                
+            ],
+                'Asia': [
+                { species: 'Dipterocarpus alatus', conservationAction: 'Forest preservation and reforestation.' },
+                { species: 'Aquilaria malaccensis', conservationAction: 'Planting initiatives and illegal logging prevention.' },
+                { species: 'Pterospermum acerifolium (Devil Tree)', conservationAction: 'Habitat conservation and sustainable logging practices.' },
+                { species: 'Swietenia macrophylla (Mahogany)', conservationAction: 'Sustainable forestry practices and reforestation efforts.' },
+                { species: 'Ginkgo biloba (Ginkgo)', conservationAction: 'Conservation in botanical gardens and habitat protection.' },
+                { species: 'Taxus wallichiana (Himalayan Yew)', conservationAction: 'Regulation of harvesting and replanting initiatives.' },
+                { species: 'Cinnamomum camphora (Camphor Tree)', conservationAction: 'Forest conservation and restoration projects.' },
+                { species: 'Caryota urens (Fish Tail Palm)', conservationAction: 'Protection of habitat and sustainable management.' },
+                { species: 'Mangifera indica (Mango)', conservationAction: 'Conservation of traditional varieties and sustainable agriculture.' },
+                { species: 'Rhododendron arboreum (Tree Rhododendron)', conservationAction: 'Habitat restoration and community awareness programs.' },
+                   
+                ],
+                'Antarctica': [
+                { species: 'Deschampsia antarctica (Antarctic Hairgrass)', conservationAction: 'Habitat protection and monitoring of invasive species.' },
+                { species: 'Colobanthus quitensis (Antarctic Pearlwort)', conservationAction: 'Conservation of existing populations and protection from climate change impacts.' },
+                { species: 'Usnea antarctica (Antarctic Beard Lichen)', conservationAction: 'Monitoring of lichen populations and protection from habitat disturbance.' },
+                { species: 'Antarctic moss species (e.g., Bryum spp.)', conservationAction: 'Protection of moss habitats and reduction of human impact.' },
+                { species: 'Austrofestuca littoralis (Coastal Tussock Grass)', conservationAction: 'Habitat conservation and study of population dynamics.' },
+                { species: 'Pachycladon frigidum', conservationAction: 'Monitoring of populations and protection from introduced species.' },
+                { species: 'Drepanocladus uncinatus', conservationAction: 'Habitat protection and monitoring for climate resilience.' },
+                { species: 'Sphagnum moss species', conservationAction: 'Conservation of bog habitats and management of visitor impacts.' },
+                { species: 'Cotula plumosa', conservationAction: 'Preservation of populations and research on ecological roles.' },
+                { species: 'Lobaria spp. (Lichens)', conservationAction: 'Protection from pollution and monitoring of habitat changes.' },
+                ],
+                'Europe': [
+                { species: 'Abies alba (European Silver Fir)', conservationAction: 'Forest management and reforestation efforts.' },
+                { species: 'Taxus baccata (Yew)', conservationAction: 'Conservation of old-growth forests and habitat protection.' },
+                { species: 'Quercus robur (English Oak)', conservationAction: 'Sustainable forest management and habitat restoration.' },
+                { species: 'Corylus avellana (Hazel)', conservationAction: 'Protection of woodlands and promotion of traditional coppicing.' },
+                { species: 'Pinus sylvestris (Scots Pine)', conservationAction: 'Habitat restoration and sustainable forestry practices.' },
+                { species: 'Fagus sylvatica (European Beech)', conservationAction: 'Conservation of ancient forests and genetic diversity.' },
+                { species: 'Populus nigra (Black Poplar)', conservationAction: 'Rehabilitation of riverbanks and floodplain ecosystems.' },
+                { species: 'Prunus avium (Wild Cherry)', conservationAction: 'Conservation in natural reserves and habitat restoration.' },
+                { species: 'Orchis purpurea (Lady Orchid)', conservationAction: 'Protection of meadows and traditional land management.' },
+                { species: 'Centaurea corymbosa (Dahlia-like Centaurea)', conservationAction: 'Habitat protection and control of invasive species.' },
+                 ],
+                'North America': [
+                { species: 'Sequoiadendron giganteum (Giant Sequoia)', conservationAction: 'Protection of old-growth forests and habitat restoration.' },
+                { species: 'Taxodium distichum (Bald Cypress)', conservationAction: 'Wetland restoration and protection of swamp ecosystems.' },
+                { species: 'Pinus strobus (Eastern White Pine)', conservationAction: 'Sustainable logging practices and reforestation efforts.' },
+                { species: 'Cornus florida (Flowering Dogwood)', conservationAction: 'Management of forest health and control of diseases.' },
+                { species: 'Pseudotsuga menziesii (Douglas Fir)', conservationAction: 'Sustainable forest management and protection of habitats.' },
+                { species: 'Chamaecyparis thyoides (Atlantic White Cedar)', conservationAction: 'Restoration of coastal wetlands and habitat protection.' },
+                { species: 'Rhododendron maximum (Great Laurel)', conservationAction: 'Habitat protection and management of invasive species.' },
+                { species: 'Quercus rubra (Northern Red Oak)', conservationAction: 'Forest conservation and promotion of native species.' },
+                { species: 'Aesculus flava (Yellow Buckeye)', conservationAction: 'Protection of forest habitats and restoration projects.' },
+                { species: 'Magnolia virginiana (Sweetbay Magnolia)', conservationAction: 'Conservation of wetland habitats and ecological restoration.' },
+                ],
+                'Australia': [
+                { species: 'Acacia pendula (Weeping Myall)', conservationAction: 'Habitat restoration and protection from land clearing.' },
+                { species: 'Xanthorrhoea johnsonii ', conservationAction: 'Fire management and protection of remaining populations.' },
+                { species: 'Eucalyptus camaldulensis', conservationAction: 'Management of water resources and protection of riparian habitats.' },
+                { species: 'Brachychiton acerifolius (Flame Tree)', conservationAction: 'Conservation of habitats and promotion of public awareness.' },
+                { species: 'Persoonia nutans (Nodding Geebung)', conservationAction: 'Protection of specific habitat areas and seed bank preservation.' },
+                { species: 'Hibiscus brennianus ', conservationAction: 'Habitat conservation and monitoring of population health.' },
+                { species: 'Adenanthos sericeus (Woolly Bush)', conservationAction: 'Land management practices to prevent habitat degradation.' },
+                { species: 'Allocasuarina luehmannii (Buloke)', conservationAction: 'Preservation of existing populations and habitat improvement.' },
+                { species: 'Corymbia citriodora (Lemon-scented Gum)', conservationAction: 'Sustainable forestry practices and habitat protection.' },
+                { species: 'Callitris columellaris (Black Cypress Pine)', conservationAction: 'Conservation of remnant populations and habitat restoration.' },
+            ],
+                'South America': [
+                { species: 'Pseudolmedia laevis', conservationAction: 'Protection of natural habitats and sustainable forestry practices.' },
+                { species: 'Arecaceae (Palms)', conservationAction: 'Habitat conservation and promotion of sustainable harvesting practices.' },
+                { species: 'Araucaria angustifolia (Brazilian Pine)', conservationAction: 'Forest restoration and protection of remaining populations.' },
+                { species: 'Cedrela odorata (Spanish Cedar)', conservationAction: 'Management of logging and reforestation initiatives.' },
+                { species: 'Tabebuia impetiginosa (Pink Ipê)', conservationAction: 'Protection against overharvesting and habitat loss.' },
+                { species: 'Swietenia macrophylla (Mahogany)', conservationAction: 'Sustainable logging and enforcement of conservation laws.' },
+                { species: 'Carapa guianensis (Andiroba)', conservationAction: 'Promotion of agroforestry systems and habitat protection.' },
+                { species: 'Myrciaria dubia (Camu Camu)', conservationAction: 'Conservation of rainforest ecosystems and cultivation efforts.' },
+                { species: 'Hymenaea courbaril (Brazilian Lignum Vitae)', conservationAction: 'Sustainable management and protection of habitats.' },
+                { species: 'Bertholletia excelsa (Brazil Nut Tree)', conservationAction: 'Conservation of forest areas and promotion of sustainable harvesting.' },
+                ],   
+            };
+
+            const speciesData = endangeredSpecies[continent];
+
+            // Display species and conservation actions for the selected continent
+            if (speciesData) {
+                speciesData.forEach(item => {
+                    const speciesItem = document.createElement('li');
+                    speciesItem.textContent = item.species;
+                    speciesItem.classList.add('text-gray-300', 'mt-1'); // Adjust text color for species
+                    speciesList.appendChild(speciesItem);
+
+                    const actionItem = document.createElement('li');
+                    actionItem.textContent = item.conservationAction;
+                    actionItem.classList.add('text-gray-400', 'mt-1'); // Adjust text color for actions
+                    conservationActionsList.appendChild(actionItem);
+                });
+
+                resultsDiv.classList.remove('hidden'); // Show results
+
+                // Prepare data for the chart
+                const labels = speciesData.map(item => item.species);
+                const data = speciesData.map((_, index) => (10 - index) * 10); // Dummy data for bar chart
+
+                // Destroy the previous chart instance if it exists
+                if (speciesChart) {
+                    speciesChart.destroy();
+                }
+
+                // Create new chart
+                speciesChart = new Chart(speciesChartContext, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Endangerment Level (Dummy Data)',
+                            data: data,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            } else {
+                resultsDiv.classList.add('hidden'); // Hide results if no data
+            }
+        }
+    </script>
+</body>
+</html>

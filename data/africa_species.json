@@ -1,0 +1,27 @@
+[
+  {
+      "common_name": "Adansonia digitata",
+      "scientific_name": "Adansonia digitata",
+      "description": "Also known as the Baobab, famous for its large trunk."
+  },
+  {
+      "common_name": "Encephalartos woodii",
+      "scientific_name": "Encephalartos woodii",
+      "description": "A critically endangered cycad species native to South Africa."
+  },
+  {
+      "common_name": "Prunus africana",
+      "scientific_name": "Prunus africana",
+      "description": "A tree whose bark is harvested for medicinal uses."
+  },
+  {
+      "common_name": "Adenia globosa",
+      "scientific_name": "Adenia globosa",
+      "description": "A vine species that grows in tropical Africa."
+  },
+  {
+      "common_name": "Widdringtonia nodiflora",
+      "scientific_name": "Widdringtonia nodiflora",
+      "description": "An endangered conifer species found in South Africa."
+  }
+]

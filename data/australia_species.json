@@ -1,0 +1,27 @@
+[
+  {
+      "common_name": "Acacia woodyii",
+      "scientific_name": "Acacia woodyii",
+      "description": "A tree species native to Australia with ecological importance."
+  },
+  {
+      "common_name": "Eucalyptus regnans",
+      "scientific_name": "Eucalyptus regnans",
+      "description": "Also known as Mountain Ash, one of the tallest tree species."
+  },
+  {
+      "common_name": "Grevillea robusta",
+      "scientific_name": "Grevillea robusta",
+      "description": "Known as Silky Oak, valued for its ornamental qualities."
+  },
+  {
+      "common_name": "Allocasuarina luehmannii",
+      "scientific_name": "Allocasuarina luehmannii",
+      "description": "Commonly known as Buloke, a unique tree species."
+  },
+  {
+      "common_name": "Hakea sericea",
+      "scientific_name": "Hakea sericea",
+      "description": "An Australian shrub that produces distinctive flowers."
+  }
+]

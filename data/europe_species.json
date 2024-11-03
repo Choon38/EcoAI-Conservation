@@ -1,0 +1,27 @@
+[
+  {
+      "common_name": "Pinus heldreichii",
+      "scientific_name": "Pinus heldreichii",
+      "description": "Also known as Bosnian Pine, found in mountainous regions."
+  },
+  {
+      "common_name": "Taxus baccata",
+      "scientific_name": "Taxus baccata",
+      "description": "Commonly known as the Yew, a tree with medicinal properties."
+  },
+  {
+      "common_name": "Quercus robur",
+      "scientific_name": "Quercus robur",
+      "description": "The English Oak, a symbol of strength in many cultures."
+  },
+  {
+      "common_name": "Ulmus glabra",
+      "scientific_name": "Ulmus glabra",
+      "description": "Known as Wych Elm, used in traditional medicine."
+  },
+  {
+      "common_name": "Picea abies",
+      "scientific_name": "Picea abies",
+      "description": "Commonly known as Norway Spruce, used for timber and paper."
+  }
+]

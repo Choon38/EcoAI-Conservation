@@ -1,0 +1,27 @@
+[
+  {
+      "common_name": "Taxodium distichum",
+      "scientific_name": "Taxodium distichum",
+      "description": "Also known as Bald Cypress, found in swampy areas."
+  },
+  {
+      "common_name": "Sequoiadendron giganteum",
+      "scientific_name": "Sequoiadendron giganteum",
+      "description": "The Giant Sequoia, among the largest trees on earth."
+  },
+  {
+      "common_name": "Pinus strobus",
+      "scientific_name": "Pinus strobus",
+      "description": "The Eastern White Pine, valued for its wood."
+  },
+  {
+      "common_name": "Quercus alba",
+      "scientific_name": "Quercus alba",
+      "description": "The White Oak, known for its strength and durability."
+  },
+  {
+      "common_name": "Ginkgo biloba",
+      "scientific_name": "Ginkgo biloba",
+      "description": "An ancient tree species known for its unique leaves."
+  }
+]

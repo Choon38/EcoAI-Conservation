@@ -1,0 +1,27 @@
+[
+  {
+      "common_name": "Dumontiaceae",
+      "scientific_name": "Dumontiaceae",
+      "description": "A family of seaweeds found in Antarctic waters."
+  },
+  {
+      "common_name": "Nothofagus antarctica",
+      "scientific_name": "Nothofagus antarctica",
+      "description": "A deciduous tree that grows in sub-Antarctic regions."
+  },
+  {
+      "common_name": "Colobanthus quitensis",
+      "scientific_name": "Colobanthus quitensis",
+      "description": "Known as Antarctic Pearlwort, one of the few flowering plants in Antarctica."
+  },
+  {
+      "common_name": "Myrtus novae-zelandiae",
+      "scientific_name": "Myrtus novae-zelandiae",
+      "description": "A shrub native to New Zealand and sub-Antarctic islands."
+  },
+  {
+      "common_name": "Hebe spp.",
+      "scientific_name": "Hebe spp.",
+      "description": "A genus of flowering plants found in sub-Antarctic regions."
+  }
+]
